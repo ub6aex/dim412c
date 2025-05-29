@@ -1,16 +1,18 @@
 Status LED:
     cathode - PA4
+    anode - VCC
 
-UART input:
+UART input (DMX512):
     PA3
 
-TM1637:
+TM1637 (7-seg driver):
     CLK - PA0
     DIO - PA1
 
-PCA9685:
+PCA9685 (PWM-driver):
     CLK - PA9
     SDA - PA10
 
-Output LEDs:
-    PA5, PA6, PA7, B1
+Output LEDs (ch1-ch4):
+    cathodes - PA5, PA6, PA7, PB1
+    anodes - VCC

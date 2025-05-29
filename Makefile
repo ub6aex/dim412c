@@ -1,4 +1,4 @@
-PRJ_NAME   = dim4c
+PRJ_NAME   = dim412c
 SRCDIR     = src
 BUILD_DIR  = build
 SRC        = $(wildcard $(SRCDIR)/*.c)
@@ -18,9 +18,14 @@ ASFLAGS    =  $(CFLAGS)
 LDFLAGS    = -T $(LDSCRIPT) -Wl,--gc-sections --specs=nano.specs --specs=nosys.specs
 
 ifeq ($(DEBUG), 1)
-CFLAGS += -g -gdwarf-2
+	CFLAGS += -g -gdwarf-2
 endif
-CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
+	CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
+
+# Maximum number of channels supported by hardware
+ifneq ($(CH_NUM),)
+	CFLAGS += -DCH_NUM="$(CH_NUM)"
+endif
 
 .PHONY: all clean flash
 

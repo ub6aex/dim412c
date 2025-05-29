@@ -3,7 +3,12 @@
 
 #include <stdbool.h>
 
-#define DMX_CHANNELS_NUM 4 // maximum number of channels supported by hardware
+// maximum number of channels supported by hardware
+#ifdef CH_NUM
+    #define DMX_CHANNELS_NUM CH_NUM
+#else
+    #define DMX_CHANNELS_NUM 4
+#endif
 
 uint8_t* USART1_getDmxBuffer(void);
 void USART1_init(void);
